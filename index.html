@@ -9,7 +9,11 @@
 <body>
 	<h1>Flashcard web app</h1>
 	<br>
-	<h3>Enter the text for the flashcards</h3>
+	<h3>Select a type of flash card and enter the text</h3>
+	<form>
+		<input type='radio'  name='card' value='basic'>Basic Card <br>
+		<input type='radio' name='card' value='cloze'>Cloze Card 
+	</form>
 	<p>Front text</p>
 	<textarea name='front_text' id='first-input' value='' rows='8' cols='75'></textarea>
 	<p>Back text</p>

@@ -1,6 +1,9 @@
 'use strict'
 let $frontinput = $('#first-input');
 let $backinput = $('#second-input');
+let $flashdiv = $('#flashcard-display');
+let $basicradio = $('#flash-basic-btn');
+let $clozeradio = $('#flash-cloze-btn');
 function BasicCard (front, back){
 	if(this instanceof BasicCard){
 		this.front = front;
@@ -48,12 +51,26 @@ function clearInputs(){
 	// $backinput.value('');
 }
 
+
+function createFlashCard(cardtext1, cardtext2){
+	//
+	/*conditional statement ? return BasicCard(cardtext1, cardtext2) : 
+	return ClozeCard(cardtext1, cardtext2) */
+
+}
+
 $(document).ready(() => {
 	
 
+
 	$('#card-btn').on('click' , () => {	
-		const $front_text = $('#first-input').val();
-		const $back_text = $('#second-input').val();
+		alert($('input:radio:checked').val());
+		const $first_text = $('#first-input').val();
+		const $sec_text = $('#second-input').val();
+		console.assert($first_text);
+		console.assert($sec_text);	
+
+		createFlashCard($first_text, $sec_text)
 		// const flashcard = ClozeCard($front_text, $back_text);
 		const flashcard  = BasicCard($front_text, $back_text);
 		// let $cardfront = $('<div class="front">').append($('<p>').text(flashcard.partial));
@@ -63,12 +80,11 @@ $(document).ready(() => {
 		let $card = $('<div class="card">').append($cardfront).append($cardback);
 		$card.flip();
 		clearInputs();
-		$('#flashcard-display').append($card);
+		$flashdiv.append($card);
 	});
 
-	$('#flashcard-display').delegate('.card', 'click', function(){
+	$flashdiv.delegate('.card', 'click', function(){
 		$(this).flip();
-	} )
-		
+	});
 	
 })
